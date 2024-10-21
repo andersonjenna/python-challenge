@@ -30,7 +30,7 @@ with open(file_to_load) as election_data:
     # Loop through each row of the dataset and process it
     for row in reader:
 
-        # Print a loading indicator (for large datasets)
+        # Print a loading indicator (for large datasets)   
         print(". ", end="")
 
         # Increment the total vote count for each row
@@ -65,7 +65,7 @@ with open(file_to_output, "w") as txt_file:
 
     # Loop through the candidates to determine vote percentages and identify the winner
     for candidate in candidate_votes:
-        votes - candidate_votes[candidate]
+        votes = candidate_votes[candidate]
         
 
         # Get the vote count and calculate the percentage
@@ -86,9 +86,10 @@ with open(file_to_output, "w") as txt_file:
         f"---------------------\n"
         f"Winner: {winning_candidate}\n"
         f"Winning Vote Count: {winning_count}\n"
-        f"Winning Percentage: {(winning_count / total_votes) 100: .3f}%\n"
+        f"Winning Percentage: {(winning_count / total_votes) * 100: .3f}%\n"
         f"-----------------\n"
     )
     print(winning_candidate_summary, end="")
     # Save the winning candidate summary to the text file
-    txt_file.write(winning_candidate_summary)
+    with open(file_to_output, "w") as txt_file:
+        txt_file.write(winning_candidate_summary)
